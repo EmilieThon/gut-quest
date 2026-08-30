@@ -11,13 +11,21 @@
    commencer par envoyer l'adresse de qui la lit à un tiers. */
 
 :root {
-  --echelle: 1.34;
-  /* La largeur de la colonne, portée de 34 à 37 rem. Comptée sur la ligne
-     RENDUE, au Range et non à l'estimation : 75 caractères sur la première
-     ligne du premier paragraphe. La fourchette confortable s'arrête là, et
-     au-delà l'œil perd la ligne suivante en revenant à la marge. C'est donc
-     une borne mesurée, et non un goût : elle ne s'élargit plus. */
-  --mesure: 37rem;
+  /* 1,34 donnait 16,1 px de corps, et une colonne de 592 px dans laquelle
+     tenaient 75 caractères : les marges pesaient alors plus que le texte, et
+     c'était le signe d'un corps trop petit, pas d'une colonne trop étroite.
+     Ce qui doit rester borné est le nombre de CARACTÈRES par ligne ; le même
+     nombre s'écrit sur une largeur plus grande dès que les lettres grandissent.
+     À 1,7 le corps monte à 20,4 px, la colonne à 751, et le texte l'emporte
+     enfin sur ses marges. Un document de droit lu à soixante centimètres n'a
+     rien à gagner à être écrit petit. */
+  --echelle: 1.7;
+  /* La colonne suit le corps, pour tenir les mêmes 75 caractères : c'est ce
+     nombre qui est borné, comptable au Range sur la ligne rendue, et non la
+     largeur. Au-delà de 75 l'œil perd la ligne suivante en revenant à la
+     marge. Élargir la colonne SANS grossir le texte franchirait cette borne :
+     les deux valeurs bougent ensemble ou pas du tout. */
+  --mesure: 47rem;
   --pile-corps: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --pile-titre: 'Unbounded', var(--pile-corps);
   --pile-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
