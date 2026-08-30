@@ -14,8 +14,23 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="jetons.css">
 <style>
-/* La page produit. Un écran à gauche, ce que l'application fait à droite,
-   et rien d'autre. Les valeurs viennent toutes de jetons.css. */
+/* La page produit. La marque en haut, un écran à gauche, ce que l'application
+   fait à droite, et rien d'autre. Les valeurs viennent toutes de jetons.css. */
+
+/* Unbounded, réduite aux six lettres de « GutQuest » : 1 920 octets, incorporés
+   plutôt que liés, pour que la marque ne tombe pas en silence sur la police
+   système et sans qu'une seule requête sorte. La famille porte « Marque » dans
+   son nom pour qu'on ne l'emploie pas ailleurs : elle ne sait écrire que ce mot.
+
+   Se régénère depuis la source, jamais à la main :
+   pyftsubset app/node_modules/@expo-google-fonts/unbounded/600SemiBold/Unbounded_600SemiBold.ttf \
+     --text="GutQuest" --flavor=woff --output-file=marque.woff                */
+@font-face {
+  font-family: 'Unbounded Marque';
+  font-weight: 600;
+  font-display: swap;
+  src: url(data:font/woff;base64,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) format('woff');
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -37,27 +52,47 @@ body {
 
 .page { width: 100%; max-width: 60rem; margin: 0 auto; flex: 1; display: flex; flex-direction: column; }
 
-/* L'en-tête : la marque, puis la ligne qui dit ce que c'est. */
+/* La marque, centrée. C'est la composition du kit de communication, celle de
+   l'aperçu de partage et du bandeau Play : la forme à gauche, le mot et la ligne
+   qui le suit à droite. Une seule taille est écrite, celle du mot ; le reste en
+   dérive dans les proportions du kit, 170/62 pour la forme, 44/62 pour l'écart,
+   26/62 pour la ligne. Un seul nombre à bouger si la marque doit grossir.     */
 
-.entete { display: flex; align-items: center; gap: var(--s3); }
-.entete svg { width: 40px; height: 40px; flex: none; }
-.entete .nom {
-  font-family: 'Unbounded', 'Hanken Grotesk', sans-serif;
-  font-weight: 600; font-size: 24px; letter-spacing: -.015em;
+.marque {
+  --nom: clamp(30px, 5.2vw, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--nom) * .710);
 }
+.marque .logo { width: calc(var(--nom) * 2.742); height: auto; flex: none; }
+.marque .nom {
+  font-family: 'Unbounded Marque', 'Hanken Grotesk', -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: var(--nom);
+  letter-spacing: -.015em;
+  line-height: 1;
+  margin: 0;
+}
+/* La ligne ne descend pas sous 16 px : sur un téléphone, la proportion du kit
+   la rendrait illisible. */
 .tagline {
-  margin: var(--s3) 0 0;
-  font-size: clamp(16px, 2.2vw, 19px);
+  margin: calc(var(--nom) * .258) 0 0;
+  font-size: max(16px, calc(var(--nom) * .419));
+  line-height: 1.4;
   color: var(--ink-2);
-  max-width: 30rem;
 }
 
 /* Le corps : l'appareil à gauche, ce qu'elle fait à droite. */
 
+/* L'appareil est le sujet, la colonne de texte l'accompagne. Elle est donc
+   bornée à 30 rem au lieu de prendre ce qui reste, et la paire se centre :
+   l'appareil quitte le bord et se rapproche du milieu de la page. */
 .corps {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(32px, 6vw, 76px);
   margin: clamp(24px, 4vw, 44px) 0;
   flex-wrap: wrap;
@@ -70,7 +105,7 @@ body {
   flex: none;
   width: auto;
   border: 1.4px solid var(--ink);
-  border-radius: 34px;
+  border-radius: 15.5% / 7.8%;
   padding: 9px;
   background: var(--paper);
   transform: rotate(-5deg);
@@ -78,18 +113,39 @@ body {
 }
 /* L'appareil se dimensionne sur la hauteur disponible, pas sur la largeur :
    une page produit d'un seul écran doit tenir dans un écran, sinon le
-   « Prochainement » passe sous la ligne de flottaison. La réserve de 360 px
-   couvre l'en-tête, le pied et les marges. */
+   « Prochainement » passe sous la ligne de flottaison.
+
+   La réserve est comptée, pas estimée : 112 px de marges de page, 137 px de
+   marque, 88 px de marges du corps et 46 px de pied font 383, auxquels
+   s'ajoutent les 21 px du cadre et ce que l'inclinaison de 5 degrés ajoute à
+   l'encombrement. On réserve 430. */
+/* Le rayon en POURCENTAGE, et non en pixels. La capture porte ses propres coins
+   arrondis, peints en #141414 : un rayon fixe ne peut coïncider avec eux qu'à
+   une seule hauteur d'affichage, et l'image en a trois selon la fenêtre. Du noir
+   dépassait donc aux quatre coins. Le masque de la capture a été mesuré au pixel,
+   rayon 55 px sur 417 × 880 ; on rogne à 60 pour couvrir l'anticrénelage, soit
+   60/417 en largeur et 60/880 en hauteur, ce qui reste un cercle à toute échelle. */
 .appareil img {
   display: block;
-  height: clamp(260px, calc(100vh - 360px), 470px);
+  height: clamp(260px, calc(100vh - 430px), 560px);
   width: auto;
-  border-radius: 26px;
+  border-radius: 14.39% / 6.82%;
 }
 
-/* Le bouton latéral, un simple trait, pour que la silhouette se lise comme
-   un téléphone et non comme un cadre. */
+/* Le trait de l'écran. Il est posé par le cadre, en superposition, et non par
+   une bordure sur l'image : une bordure déplacerait la découpe de l'image de sa
+   propre épaisseur, et le masque noir des coins reparaîtrait. L'encart de 9 px
+   est exactement la marge du cadre, donc le trait tombe au bord de l'écran, et
+   il porte 0,81 px, le trait de la charte. */
 .appareil { position: relative; }
+.appareil::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 0.81px solid var(--ink);
+  border-radius: 14.39% / 6.82%;
+  pointer-events: none;
+}
 .appareil::after {
   content: "";
   position: absolute;
@@ -106,7 +162,7 @@ body {
 
 /* Ce qu'elle fait. Chaque ligne arrive à son tour, un trait pour puce. */
 
-.traits { flex: 1 1 300px; list-style: none; margin: 0; padding: 0; }
+.traits { flex: 0 1 23rem; list-style: none; margin: 0; padding: 0; }
 .traits li {
   position: relative;
   padding: var(--s4) 0 var(--s4) var(--s6);
@@ -150,16 +206,49 @@ body {
 .legal a { color: var(--ink-2); text-decoration-thickness: var(--hair); text-underline-offset: .22em; }
 
 /* Sous 720 px la page s'empile, et l'appareil se redresse : une inclinaison
-   sur une colonne étroite mange la largeur pour rien. */
+   sur une colonne étroite mange la largeur pour rien.
+
+   Les marges sont en unités de fenêtre, avec un plancher en pixels : sur un
+   téléphone une marge fixe est trop grande en paysage et trop petite en
+   portrait. L'appareil se dimensionne sur la hauteur restante pour que la
+   première ligne de la colonne affleure : ce qu'elle dit vaut ce qu'elle
+   montre, et une page qui ne laisse rien dépasser n'invite pas à défiler.  */
 @media (max-width: 720px) {
-  .corps { margin: var(--s7) 0; }
+  body { padding: max(2.4vh, 16px) max(4.4vw, 16px) max(2.4vh, 16px); }
+
+  .marque {
+    flex-direction: column;
+    gap: calc(var(--nom) * .26);
+    text-align: center;
+  }
+
+  .corps {
+    flex-direction: column;
+    align-items: center;
+    margin: max(3.6vh, 26px) 0;
+    gap: max(3.2vh, 24px);
+  }
   .appareil { transform: rotate(0deg); margin: 0 auto; }
+  /* L'appareil prend la place que le blanc lui rendait. La troisième borne est
+     la largeur disponible traduite en hauteur par le rapport 417/880 de la
+     capture : un max-width la déformerait, la hauteur étant déjà imposée.
+     Les 68 px retirés sont les marges de page, du cadre et son trait. */
+  .appareil img { height: min(58vh, 620px, calc((100vw - 64px) * 880 / 417)); }
+  .traits { flex: 1 1 auto; width: 100%; }
+
   @keyframes pose { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 }
 
+/* Sans mouvement, l'appareil se pose directement dans sa position finale. La
+   règle ne rétablit pas l'inclinaison sous 720 px : elle est écrite après la
+   requête du téléphone, et sans cette précaution elle la défaisait. */
 @media (prefers-reduced-motion: reduce) {
-  .appareil, .traits li { animation: none; opacity: 1; transform: rotate(-5deg); }
+  .appareil, .traits li { animation: none; opacity: 1; }
+  .appareil { transform: rotate(-5deg); }
   .traits li { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
+  .appareil { transform: none; }
 }
 </style>
 </head>
@@ -167,12 +256,13 @@ body {
 
 <main class="page">
 
-  <header class="entete">
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" focusable="false"> <defs> <radialGradient id="sun" cx="34%" cy="28%" r="78%"> <stop offset="0%"   stop-color="#FFE24F"/> <stop offset="52%"  stop-color="#FFEC93"/> <stop offset="100%" stop-color="#FFF6CF"/> </radialGradient> </defs> <path d="M84.8 40.7Q92.4 50 84.8 59.3Q77.7 66 75.5 75.5Q71.2 86.7 59.3 84.8Q50 82 40.7 84.8Q28.8 86.7 24.5 75.5Q22.3 66 15.2 59.3Q7.6 50 15.2 40.7Q22.3 34 24.5 24.5Q28.8 13.3 40.7 15.2Q50 18 59.3 15.2Q71.2 13.3 75.5 24.5Q77.7 34 84.8 40.7Z" fill="url(#sun)" stroke="#111" stroke-width="2"/> <ellipse cx="39.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> <ellipse cx="60.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> </svg>
-    <span class="nom">GutQuest</span>
+  <header class="marque">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" focusable="false"> <defs> <radialGradient id="sun" cx="34%" cy="28%" r="78%"> <stop offset="0%"   stop-color="#FFE24F"/> <stop offset="52%"  stop-color="#FFEC93"/> <stop offset="100%" stop-color="#FFF6CF"/> </radialGradient> </defs> <path d="M84.8 40.7Q92.4 50 84.8 59.3Q77.7 66 75.5 75.5Q71.2 86.7 59.3 84.8Q50 82 40.7 84.8Q28.8 86.7 24.5 75.5Q22.3 66 15.2 59.3Q7.6 50 15.2 40.7Q22.3 34 24.5 24.5Q28.8 13.3 40.7 15.2Q50 18 59.3 15.2Q71.2 13.3 75.5 24.5Q77.7 34 84.8 40.7Z" fill="url(#sun)" stroke="#111" stroke-width="2"/> <ellipse cx="39.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> <ellipse cx="60.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> </svg>
+    <div>
+      <h1 class="nom">GutQuest</h1>
+      <p class="tagline">Le protocole FODMAP, aliment par aliment.</p>
+    </div>
   </header>
-
-  <p class="tagline">Le protocole FODMAP, aliment par aliment.</p>
 
   <div class="corps">
 
