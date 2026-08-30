@@ -1,0 +1,203 @@
+/* Le style du site public. Il ne porte aucune couleur ni aucune forme en dur :
+   tout vient de jetons.css, lui-même recopié de la source du design system.
+
+   La seule valeur propre au site est --echelle, et elle est ici pour une raison
+   qui se dit : les jetons sont dimensionnés pour un écran de téléphone tenu à
+   trente centimètres. Une page de droit lue sur un écran d'ordinateur, à soixante,
+   demande davantage. Plutôt que de réécrire treize tailles, on en multiplie une.
+
+   Aucune requête sortante : ni police distante, ni feuille tierce, ni mesure
+   d'audience. Une page qui explique que les données ne partent pas ne peut pas
+   commencer par envoyer l'adresse de qui la lit à un tiers. */
+
+:root {
+  --echelle: 1.34;
+  --mesure: 34rem;          /* la largeur de la colonne de texte */
+  --pile-corps: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --pile-titre: 'Unbounded', var(--pile-corps);
+  --pile-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* Le dégradé de page est dessiné pour un écran de téléphone : ses pourcentages
+   sont relatifs à la boîte, et sur un écran d'ordinateur il couvre tout, corps de
+   texte compris. On lui donne donc une taille absolue, proche de la largeur d'un
+   téléphone, et le papier reprend la main dès le premier paragraphe. Le jaune
+   redevient ce que la charte dit qu'il est : un point de départ, pas un fond. */
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: var(--grad-page);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 34rem, cover;
+  background-position: left top, left top;
+  color: var(--ink);
+  font-family: var(--pile-corps);
+  font-size: calc(var(--body) * var(--echelle));
+  line-height: 1.62;
+  padding: var(--s7) var(--s5) calc(var(--s7) * 2);
+}
+
+.page { max-width: var(--mesure); margin: 0 auto; }
+
+/* L'en-tête : le picto, puis le nom, puis ce que la page est. */
+
+.marque { display: flex; align-items: center; gap: var(--s3); margin-bottom: var(--s6); }
+.marque svg { width: 34px; height: 34px; flex: none; }
+.marque .nom {
+  font-family: var(--pile-titre);
+  font-size: calc(var(--t1) * var(--echelle));
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.marque a { color: inherit; text-decoration: none; }
+
+/* Ces deux libellés se posent sur le haut du dégradé, donc sur le jaune, et non
+   sur le papier. Les contrastes annotés dans les jetons sont mesurés contre le
+   papier : sur #FFE24F, --ink-3 tombe à 4,51:1 pour un seuil à 4,5. On prend donc
+   --ink-2, qui y tient 8,2:1. La hiérarchie est portée par la casse, la chasse
+   fixe et l'interlettrage, pas par le poids d'encre. */
+
+.surtitre {
+  font-family: var(--pile-mono);
+  font-size: calc(var(--label) * var(--echelle));
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin: 0 0 var(--s2);
+}
+
+h1 {
+  font-family: var(--pile-titre);
+  font-size: calc(var(--t0) * var(--echelle));
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -.015em;
+  margin: 0 0 var(--s4);
+}
+
+h2 {
+  font-family: var(--pile-titre);
+  font-size: calc(var(--t2) * var(--echelle));
+  font-weight: 600;
+  line-height: 1.3;
+  margin: var(--s7) 0 var(--s3);
+}
+
+h3 {
+  font-size: calc(var(--nom) * var(--echelle));
+  font-weight: 600;
+  margin: var(--s6) 0 var(--s2);
+}
+
+p, ul, ol { margin: 0 0 var(--s4); }
+li { margin-bottom: var(--s2); }
+strong { font-weight: 600; }
+
+.accroche {
+  font-size: calc(var(--t3) * var(--echelle));
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+a { color: var(--ink); text-decoration-thickness: var(--hair); text-underline-offset: .22em; }
+a:hover { text-decoration-thickness: 1.5px; }
+
+/* Les tableaux du texte de droit. Ils portent beaucoup, et doivent rester
+   lisibles sur un téléphone : ils défilent dans leur propre boîte. */
+
+.tableau { overflow-x: auto; margin: 0 0 var(--s5); }
+/* min-width est ce qui fait travailler overflow-x : sans lui, la table se comprime
+   jusqu'à un mot par ligne au lieu de déborder, et le défilement ne sert jamais. */
+table { border-collapse: collapse; width: 100%; min-width: 30rem; font-size: calc(var(--body-sm) * var(--echelle)); }
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--s2) var(--s3) var(--s2) 0;
+  border-bottom: var(--hair) solid var(--line-soft);
+}
+th {
+  font-family: var(--pile-mono);
+  font-size: calc(var(--label) * var(--echelle));
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 400;
+  border-bottom-color: var(--ink-4);
+}
+
+/* Un encadré. Pas d'aplat, pas d'ombre : un trait, et rien d'autre. */
+
+.cadre {
+  border: var(--hair) solid var(--ink-4);
+  border-radius: var(--r-surface);
+  padding: var(--s4) var(--s5);
+  margin: 0 0 var(--s5);
+}
+.cadre > :last-child { margin-bottom: 0; }
+.cadre h3:first-child { margin-top: 0; }
+
+/* Les deux portes de la page d'accueil. Le contour dit qu'on peut cliquer,
+   la place dans la grille dit laquelle vient d'abord. Aucune couleur ne parle. */
+
+.portes { list-style: none; padding: 0; margin: var(--s6) 0 0; }
+.portes li { margin: 0 0 var(--s3); }
+.portes a {
+  display: block;
+  border: var(--hair) solid var(--ink-4);
+  border-radius: var(--r-surface);
+  padding: var(--s4) var(--s5);
+  text-decoration: none;
+}
+.portes a:hover, .portes a:focus-visible { border-color: var(--ink); }
+.portes .titre { display: block; font-weight: 600; font-size: calc(var(--t3) * var(--echelle)); margin-bottom: var(--s1); }
+.portes .quoi { display: block; color: var(--ink-2); font-size: calc(var(--body-sm) * var(--echelle)); line-height: 1.5; }
+
+/* Ce qui reste à remplir avant publication. Voyant, et volontairement laid :
+   une page de droit ne se publie pas avec un trou dedans. */
+
+.trou {
+  font-family: var(--pile-mono);
+  font-size: calc(var(--body-sm) * var(--echelle));
+  border: 1px dashed var(--ink);
+  border-radius: var(--r-tag);
+  padding: 1px var(--s2);
+  white-space: nowrap;
+}
+
+.pied {
+  margin-top: calc(var(--s7) * 1.5);
+  padding-top: var(--s4);
+  border-top: var(--hair) solid var(--line-soft);
+  font-size: calc(var(--body-sm) * var(--echelle));
+  color: var(--ink-3);
+}
+.pied p { margin-bottom: var(--s2); }
+.pied a { color: var(--ink-2); }
+
+.retour {
+  display: inline-block;
+  font-family: var(--pile-mono);
+  font-size: calc(var(--label) * var(--echelle));
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  text-decoration: none;
+  margin-bottom: var(--s5);
+}
+.retour:hover { color: var(--ink); }
+
+@media (max-width: 30rem) {
+  body { padding: var(--s5) var(--s4) var(--s7); }
+  :root { --echelle: 1.24; }
+}
+
+/* Le mouvement se réduit si le système le demande. L'application tient la même
+   règle, et une page qui la contredirait serait incohérente. */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

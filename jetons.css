@@ -1,0 +1,46 @@
+/* GÉNÉRÉ par site/construire.mjs, recopié de 1-conception/ds/tokens.css.
+   Ne pas éditer à la main : la source est 1-conception/ds/tokens.json. */
+  :root{
+    /* couleur */
+    --paper:#FFFDF6;
+    --sun:#FFE24F;
+    --ink:rgba(17,17,17,1);  /* 18.06:1 · titres, valeurs, traits structurels, contours de pill */
+    --ink-2:rgba(17,17,17,.78);  /* 9.28:1 · texte secondaire */
+    --ink-3:rgba(17,17,17,.60);  /* 4.87:1 · labels, placeholders, états à venir */
+    --ink-4:rgba(17,17,17,.45);  /* 3.01:1 · contours de composants : champs, radios, onglets, chips */
+    --line-soft:rgba(17,17,17,.12);  /* 1.29:1 · séparateurs de liste */
+    /* typographie */
+    --f-display:'Unbounded';--f-body:'Hanken Grotesk';--f-mono:'DM Mono';
+    --t0:20px;  /* titre de fiche */
+    --t1:18px;  /* titre d'écran, état du Gut */
+    --t2:16px;  /* titre de modale, accroche de page */
+    --nom:15px;  /* nom de ligne de liste et d'accordéon */
+    --val:14px;  /* valeurs clés, nom de phase */
+    --t3:13px;  /* ligne interactive */
+    --t4:12.5px;  /* nom secondaire, champ de formulaire */
+    --body:12px;  /* corps de texte */
+    --body-sm:11.5px;  /* corps secondaire */
+    --pill:11px;  /* texte des tags */
+    --sub:10.5px;  /* pill compacte */
+    --num:10px;  /* numéraux cerclés */
+    --label:8.5px;  /* libellé mono */
+    --label-sm:7.5px;  /* libellé mono compact */
+    /* espacement */
+    --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;
+    /* forme */
+    --r-surface:8px;  /* modales, popups, toasts */
+    --r-tab:14px;  /* onglets de phase */
+    --r-tag:6px;  /* tag rectangulaire */
+    --r-pill:99px;  /* pills d'aliment, de famille, tags de bordure */
+    /* trait */
+    --hair:0.5px;  /* bordure CSS */
+    --stroke-picto:0.81;  /* tous les pictos de l'app */
+    --stroke-plein:0.5;
+    --stroke-pointille:1;
+    /* mouvement */
+    --motion:1;
+    --ease:cubic-bezier(.3,.8,.3,1);
+    --pop:cubic-bezier(.3,1.45,.45,1);
+    /* dégradé de page */
+    --grad-page:radial-gradient(120% 56% at 28% 12%,#FFE24F,#FFEC93 40%,#FFF6CF 62%,rgba(255,246,207,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);
+  }

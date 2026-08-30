@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité · GutQuest</title>
+<meta name="description" content="Politique de confidentialité de GutQuest. Les données de santé ne quittent jamais l'appareil.">
+<link rel="stylesheet" href="jetons.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+
+  <a class="retour" href="index.html">GutQuest</a>
+
+  <p class="surtitre">Version 2 · 29 août 2026</p>
+  <h1>Politique de confidentialité</h1>
+
+  <h2>1. Le principe, avant tout le reste</h2>
+
+  <p><strong>Les données de santé ne quittent jamais l'appareil.</strong></p>
+
+  <p>GutQuest accompagne le protocole pauvre en FODMAP, suivi par des personnes atteintes du syndrome de l'intestin irritable. Ce qu'une personne y consigne, ses tests, ses ressentis, ses symptômes, ses seuils de tolérance, révèle son état de santé. La réponse retenue n'est pas de mieux protéger ces données sur un serveur : c'est de ne pas les y mettre.</p>
+
+  <p>L'application sépare donc deux mondes étanches.</p>
+
+  <div class="tableau">
+  <table>
+    <tbody>
+      <tr><th>Monde</th><th>Où</th><th>Contenu</th><th>Qui peut le lire</th></tr>
+      <tr><td><strong>Privé</strong></td><td>base SQLite chiffrée, sur l'appareil</td><td>tests, jours de test, ressentis, état du ventre, symptômes, seuils personnels, favoris, célébrations, réglages</td><td>la personne seule</td></tr>
+      <tr><td><strong>Public</strong></td><td>Supabase, région Union européenne</td><td>catalogue des aliments et des recettes, compte, sauvegarde chiffrée opaque</td><td>le catalogue est public ; le compte se limite à une identité ; la sauvegarde est illisible, y compris pour l'éditeur</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Cette séparation est vérifiable dans le schéma : aucune table de santé n'existe côté serveur.</p>
+
+  <h2>2. Qui traite les données</h2>
+
+  <p>GutQuest est éditée par Emilie Thonat, responsable du traitement au sens du RGPD, joignable à <a href="mailto:contact@gut-quest.com">contact@gut-quest.com</a>.</p>
+
+  <h2>3. Ce qui reste sur l'appareil, et n'est jamais transmis</h2>
+
+  <div class="tableau">
+  <table>
+    <tbody>
+      <tr><th>Donnée</th><th>Finalité</th><th>Catégorie</th></tr>
+      <tr><td>Test d'un aliment, jours de test, portion du jour</td><td>Conduire la réintroduction aliment par aliment</td><td><strong>Donnée de santé, art. 9 RGPD</strong></td></tr>
+      <tr><td>Ressenti et état du ventre parmi 5 états</td><td>Observer ce que le corps dit après une prise</td><td><strong>Donnée de santé, art. 9 RGPD</strong></td></tr>
+      <tr><td>Symptôme et intensité de 1 à 3</td><td>Déclencher la règle d'arrêt d'un test</td><td><strong>Donnée de santé, art. 9 RGPD</strong></td></tr>
+      <tr><td>Seuil personnel de tolérance par aliment</td><td>Restituer la portion tenable</td><td><strong>Donnée de santé, art. 9 RGPD</strong></td></tr>
+      <tr><td>Favoris, célébrations, phase en cours, réglages</td><td>Confort d'usage et continuité du parcours</td><td>Donnée personnelle</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>GutQuest traite des données de santé au sens de l'article 9 du RGPD</strong>, même sans diagnostic médical rattaché au compte. Le journal de symptômes suffit à révéler l'état de santé de la personne.</p>
+
+  <p>Cette qualification relève du RGPD et n'implique pas que GutQuest soit un dispositif médical au sens du règlement (UE) 2017/745. L'application ne diagnostique rien, ne calcule aucun indice clinique, et se borne à restituer les observations de la personne. Les deux qualifications sont indépendantes : GutQuest relève de la première, pas de la seconde.</p>
+
+  <h2>4. Ce qui est traité en ligne, et ce que cela contient</h2>
+
+  <div class="tableau">
+  <table>
+    <tbody>
+      <tr><th>Donnée</th><th>Finalité</th><th>Base légale</th></tr>
+      <tr><td>Adresse électronique, ou identité Google ou Apple</td><td>Rattacher une sauvegarde à une personne</td><td>Exécution du contrat, art. 6§1(b)</td></tr>
+      <tr><td>Sauvegarde chiffrée, sous forme d'un bloc opaque</td><td>Permettre de retrouver ses données après une perte d'appareil</td><td>Exécution du contrat, art. 6§1(b)</td></tr>
+      <tr><td>Catalogue des aliments et des recettes</td><td>Servir le référentiel commun</td><td>Intérêt légitime, art. 6§1(f), aucune donnée personnelle en jeu</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Trois points méritent d'être lus attentivement.</p>
+
+  <p><strong>Le compte est facultatif.</strong> L'application démarre en session anonyme, sur l'appareil, et fonctionne entièrement sans compte. L'écran de connexion n'apparaît qu'après une déconnexion volontaire.</p>
+
+  <p><strong>La sauvegarde est illisible pour l'éditeur.</strong> Elle est chiffrée sur l'appareil, avant tout envoi, avec une clé dérivée d'une phrase secrète que la personne choisit elle-même au moment de l'export. Cette phrase n'est ni stockée, ni transmise, ni récupérable. Ce que l'hébergeur détient est un bloc d'octets sans signification.</p>
+
+  <p><strong>La contrepartie est assumée et annoncée dans l'interface :</strong> phrase secrète perdue, sauvegarde définitivement illisible. C'est le prix de « personne d'autre que vous ne peut lire vos données », l'éditeur compris.</p>
+
+  <h2>5. Base légale du traitement de santé</h2>
+
+  <p>Le traitement des données de santé repose sur le <strong>consentement explicite</strong> de la personne concernée (art. 9§2(a) RGPD), recueilli séparément de l'acceptation des conditions d'usage, et horodaté sur l'appareil. Il est révocable à tout moment depuis les paramètres, sans affecter la licéité de ce qui a été traité avant le retrait.</p>
+
+  <h2>6. Qui a accès aux données</h2>
+
+  <p><strong>Sous-traitant, un seul.</strong></p>
+
+  <div class="tableau">
+  <table>
+    <tbody>
+      <tr><th>Sous-traitant</th><th>Rôle</th><th>Localisation</th><th>Ce qu'il détient</th></tr>
+      <tr><td>Supabase</td><td>Hébergement du catalogue public, de l'authentification et du bloc de sauvegarde</td><td>Union européenne</td><td>Une identité, et un bloc chiffré qu'il ne peut pas lire</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p><strong>Personne d'autre.</strong> Aucun service tiers d'analyse d'audience, aucun traceur publicitaire, aucun outil de mesure comportementale, aucune notification poussée. Ce site lui-même ne charge aucune ressource extérieure et ne dépose aucun témoin de connexion.</p>
+
+  <p><strong>Personnel interne.</strong> Aucun accès aux données de santé n'est possible, faute d'existence de ces données côté serveur. L'accès administrateur porte sur le catalogue public et sur la table des comptes. Le bloc de sauvegarde est protégé par une règle de sécurité au niveau des lignes limitant la lecture à son propriétaire, et elle ne protège qu'un contenu déjà chiffré.</p>
+
+  <h2>7. Durée de conservation</h2>
+
+  <p>Les données du monde privé sont conservées sur l'appareil aussi longtemps que la personne le décide. Elles disparaissent avec la désinstallation de l'application.</p>
+
+  <p>Les données du monde public sont conservées tant que le compte existe. La suppression du compte enchaîne, dans cet ordre et sans intervention humaine : proposition d'un export, suppression du bloc de sauvegarde distant, suppression du compte d'authentification, puis effacement de la base locale de l'appareil.</p>
+
+  <p>Une action, un résultat, et rien qui survive dans un coin.</p>
+
+  <h2>8. Vos droits</h2>
+
+  <p>Toute personne dispose des droits d'accès, de rectification, d'effacement, de limitation, de portabilité et d'opposition, ainsi que du droit de retirer son consentement.</p>
+
+  <p>L'architecture les rend directs plutôt que déclaratifs.</p>
+
+  <div class="tableau">
+  <table>
+    <tbody>
+      <tr><th>Droit</th><th>Comment il s'exerce</th></tr>
+      <tr><td>Accès (art. 15)</td><td>Les données sont sur l'appareil, affichées par l'application elle-même</td></tr>
+      <tr><td>Rectification (art. 16)</td><td>Un seuil se corrige à la main, et l'application distingue une valeur corrigée d'une valeur vécue</td></tr>
+      <tr><td>Effacement (art. 17)</td><td>Paramètres, « Supprimer le compte » : efface la sauvegarde distante <strong>et</strong> la base locale. <a href="suppression-compte.html">La marche à suivre, y compris sans l'application</a></td></tr>
+      <tr><td>Portabilité (art. 20)</td><td>L'export chiffré produit un fichier au format documenté, structuré et lisible par machine une fois déchiffré</td></tr>
+      <tr><td>Opposition, limitation</td><td>Le compte est facultatif : l'application fonctionne sans</td></tr>
+      <tr><td>Retrait du consentement</td><td>Paramètres, à tout moment</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>L'export est systématiquement proposé avant une suppression de compte, et peut être refusé. C'est le seul filet avant l'effacement, et il porte la portabilité.</p>
+
+  <p>Pour toute demande qui ne pourrait pas être satisfaite depuis l'application : <a href="mailto:contact@gut-quest.com">contact@gut-quest.com</a>. Une réponse est apportée sous un mois.</p>
+
+  <p>Vous disposez enfin du droit d'introduire une réclamation auprès d'une autorité de contrôle (art. 77 RGPD). En France, il s'agit de la <a href="https://www.cnil.fr/fr/plaintes">Commission nationale de l'informatique et des libertés</a>.</p>
+
+  <h2>9. Sécurité</h2>
+
+  <ul>
+    <li>Base locale <strong>chiffrée</strong> sur l'appareil, clé générée aléatoirement au premier lancement et conservée dans le magasin sécurisé du système (Keychain iOS, Keystore Android), jamais dans l'application.</li>
+    <li>Sauvegarde <strong>chiffrée avant envoi</strong>, en AES-256-GCM, avec une clé dérivée par fonction de dérivation à sel aléatoire depuis une phrase secrète choisie par la personne.</li>
+    <li>Données en transit protégées par TLS.</li>
+    <li>Catalogue exposé en <strong>lecture seule</strong>, aucune fonction sensible publiée.</li>
+    <li>Minimisation : le compte ne porte qu'une identité, pas un profil.</li>
+  </ul>
+
+  <h2>10. Transferts hors Union européenne</h2>
+
+  <p>Aucun. L'hébergement est situé dans l'Union européenne, et il n'existe aucun service de notification poussée, donc aucun flux technique sortant.</p>
+
+  <h2>11. Modification de cette politique</h2>
+
+  <p>Toute évolution de cette politique est publiée sur cette page, avec sa date. La version en vigueur est celle qui porte la date la plus récente en tête de page.</p>
+
+  <footer class="pied">
+    <p>Dernière mise à jour : 29 août 2026.</p>
+    <p><a href="index.html">Retour à l'accueil</a> · <a href="suppression-compte.html">Supprimer son compte</a></p>
+  </footer>
+
+</main>
+</body>
+</html>
