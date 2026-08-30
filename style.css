@@ -235,8 +235,14 @@ th {
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ink-2);
-  text-decoration: none;
   margin-bottom: var(--s5);
+  /* Souligné en permanence, et non au survol : sur un écran tactile le survol
+     n'existe pas, et c'est de là que vient l'essentiel du trafic renvoyé par
+     la fiche du magasin. Un lien qui ne se voit qu'à la souris n'est pas un
+     lien pour qui lit au doigt. */
+  text-decoration: underline;
+  text-decoration-thickness: var(--hair);
+  text-underline-offset: .38em;
 }
 .retour:hover { color: var(--ink); }
 
