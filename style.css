@@ -157,6 +157,55 @@ th {
 .portes .titre { display: block; font-weight: 600; font-size: calc(var(--t3) * var(--echelle)); margin-bottom: var(--s1); }
 .portes .quoi { display: block; color: var(--ink-2); font-size: calc(var(--body-sm) * var(--echelle)); line-height: 1.5; }
 
+/* Les écrans de l'application. Ils défilent horizontalement quand la place
+   manque, plutôt que de rétrécir : un écran de téléphone illisible ne montre
+   rien. Le débordement reste dans sa boîte, la page ne défile jamais de côté. */
+
+.ecrans {
+  display: flex;
+  gap: var(--s4);
+  margin: var(--s6) 0 var(--s7);
+  overflow-x: auto;
+  padding-bottom: var(--s3);
+  scroll-snap-type: x proximity;
+}
+.ecrans figure { margin: 0; flex: none; scroll-snap-align: start; }
+.ecrans img {
+  display: block;
+  width: 168px;
+  height: auto;
+  border: var(--hair) solid var(--ink-4);
+  border-radius: var(--r-tab);
+}
+.ecrans figcaption {
+  margin-top: var(--s2);
+  font-family: var(--pile-mono);
+  font-size: calc(var(--label) * var(--echelle));
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* La liste de ce que fait l'application. Pas de puce ronde : un trait, comme
+   le reste du produit. */
+
+.traits { list-style: none; padding: 0; margin: 0 0 var(--s5); }
+.traits li {
+  padding: var(--s3) 0 var(--s3) var(--s5);
+  border-top: var(--hair) solid var(--line-soft);
+  position: relative;
+  margin: 0;
+}
+.traits li:last-child { border-bottom: var(--hair) solid var(--line-soft); }
+.traits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--s3) + .62em);
+  width: var(--s3);
+  border-top: var(--hair) solid var(--ink);
+}
+
 /* Ce qui reste à remplir avant publication. Voyant, et volontairement laid :
    une page de droit ne se publie pas avec un trou dedans. */
 
