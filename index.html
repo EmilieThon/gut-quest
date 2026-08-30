@@ -52,7 +52,7 @@ body {
      la fenêtre, avec un plancher pour les petits écrans. Ce qu'il prend est
      rendu à la réserve ci-dessous, sans quoi le pied passerait sous la ligne
      de flottaison. */
-  padding: clamp(28px, 6vh, 72px) clamp(18px, 3vw, 40px) clamp(12px, 1.6vw, 20px);
+  padding: clamp(36px, 10vh, 120px) clamp(18px, 3vw, 40px) clamp(12px, 1.6vw, 20px);
 }
 
 .page { width: 100%; max-width: 68rem; margin: 0 auto; flex: 1; display: flex; flex-direction: column; }
@@ -143,7 +143,8 @@ body {
    La réserve est comptée, pas estimée : 112 px de marges de page, 137 px de
    marque, 88 px de marges du corps et 46 px de pied font 383, auxquels
    s'ajoutent les 21 px du cadre et ce que l'inclinaison de 5 degrés ajoute à
-   l'encombrement. Le haut de page ayant gagné 20 px, on réserve 450. */
+   l'encombrement. La réserve CITE le haut de page au lieu de le recopier : un
+   même nombre écrit à deux endroits finit par en dire deux choses. */
 /* Le rayon en POURCENTAGE, et non en pixels. La capture porte ses propres coins
    arrondis, peints en #141414 : un rayon fixe ne peut coïncider avec eux qu'à
    une seule hauteur d'affichage, et l'image en a trois selon la fenêtre. Du noir
@@ -152,12 +153,12 @@ body {
    60/417 en largeur et 60/880 en hauteur, ce qui reste un cercle à toute échelle. */
 .appareil img {
   display: block;
-  height: clamp(260px, calc(100vh - 450px), 580px);
+  height: clamp(260px, calc(100vh - 401px - clamp(36px, 10vh, 120px)), 580px);
   width: auto;
   border-radius: 14.39% / 6.82%;
 }
 .appareil .vitre {
-  --h: clamp(260px, calc(100vh - 450px), 580px);
+  --h: clamp(260px, calc(100vh - 401px - clamp(36px, 10vh, 120px)), 580px);
   display: block;
   height: var(--h);
   width: calc(var(--h) * 348 / 734);

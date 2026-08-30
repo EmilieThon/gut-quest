@@ -46,7 +46,7 @@ body {
   /* De l'air en haut, avant le nom : une page de droit qui commence au ras
      du bord se lit comme un document imposé. Le haut suit la hauteur de la
      fenêtre, avec un plancher pour les petits écrans. */
-  padding: clamp(var(--s7), 6vh, 72px) var(--s4) calc(var(--s7) * 2);
+  padding: clamp(36px, 10vh, 120px) var(--s4) calc(var(--s7) * 2);
 }
 
 .page { max-width: var(--mesure); margin: 0 auto; }
