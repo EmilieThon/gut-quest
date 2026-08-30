@@ -30,8 +30,10 @@
     --num:10px;  /* numéraux cerclés */
     --label:8.5px;  /* libellé mono */
     --label-sm:7.5px;  /* libellé mono compact */
+    --carte:26px;  /* titre d'une carte d'onboarding */
+    --rubrique:9px;  /* rubrique d'une carte d'onboarding */
     /* espacement */
-    --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;
+    --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;--gut:26px;
     /* forme */
     --r-surface:8px;  /* modales, popups, toasts */
     --r-tab:14px;  /* onglets de phase */

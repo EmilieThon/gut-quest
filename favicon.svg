@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 80 80" role="img" aria-label="GutQuest">
+  <defs> <radialGradient id="sun" cx="34%" cy="28%" r="78%"> <stop offset="0%"   stop-color="#FFE24F"/> <stop offset="52%"  stop-color="#FFEC93"/> <stop offset="100%" stop-color="#FFF6CF"/> </radialGradient> </defs>
+  <path d="M84.8 40.7Q92.4 50 84.8 59.3Q77.7 66 75.5 75.5Q71.2 86.7 59.3 84.8Q50 82 40.7 84.8Q28.8 86.7 24.5 75.5Q22.3 66 15.2 59.3Q7.6 50 15.2 40.7Q22.3 34 24.5 24.5Q28.8 13.3 40.7 15.2Q50 18 59.3 15.2Q71.2 13.3 75.5 24.5Q77.7 34 84.8 40.7Z"
+        fill="url(#sun)" stroke="#111" stroke-width="2"/>
+  <path fill="#111" d="M40 44.1 C41.6 44.1 42.9 45.4 42.9 47 C42.9 48.6 41.6 49.9 40 49.9 C38.4 49.9 37.1 48.6 37.1 47 C37.1 45.4 38.4 44.1 40 44.1 Z"/>
+  <path fill="#111" d="M60 44.1 C61.6 44.1 62.9 45.4 62.9 47 C62.9 48.6 61.6 49.9 60 49.9 C58.4 49.9 57.1 48.6 57.1 47 C57.1 45.4 58.4 44.1 60 44.1 Z"/>
+</svg>
