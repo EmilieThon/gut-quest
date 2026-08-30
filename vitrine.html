@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GutQuest · la vitrine</title>
+<meta name="description" content="GutQuest accompagne le protocole pauvre en FODMAP. Les données de santé ne quittent jamais l'appareil.">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GutQuest">
+<meta property="og:url" content="https://infos.gut-quest.com/vitrine.html">
+<meta property="og:image" content="https://infos.gut-quest.com/partage-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<!-- ============================================================
+     BLOC À COLLER DANS UN BLOC DE CODE SQUARESPACE
+     Tout est ici : styles, dessin, mouvement. Aucune requête vers
+     un tiers. Les images sont appelées en adresse absolue pour que
+     le bloc fonctionne quel que soit le site qui l'héberge.
+     Tout est cloisonné sous .gq : rien ne déborde sur la page hôte,
+     et la feuille de l'hôte ne déborde pas sur nous.
+     ============================================================ -->
+
+<div class="gq">
+<style>
+/* JETONS, générés par site/construire.mjs depuis 1-conception/ds/tokens.json.
+   Ne pas éditer à la main. */
+.gq{
+  --paper:#FFFDF6;
+  --sun:#FFE24F;
+  --ink:rgba(17,17,17,1);
+  --ink-2:rgba(17,17,17,.78);
+  --ink-3:rgba(17,17,17,.60);
+  --ink-4:rgba(17,17,17,.45);
+  --line-soft:rgba(17,17,17,.12);
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;
+  --r-surface:8px;--r-tab:14px;--r-pill:99px;
+  --hair:0.5px;
+  --ease:cubic-bezier(.3,.8,.3,1);
+  --grad-page:radial-gradient(120% 56% at 28% 12%,#FFE24F,#FFEC93 40%,#FFF6CF 62%,rgba(255,246,207,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);
+}
+/* /JETONS */
+
+/* Le cloisonnement. Tout est remis à plat sous .gq, parce qu'un gabarit
+   Squarespace impose ses marges, ses graisses et ses couleurs de lien. */
+.gq, .gq *, .gq *::before, .gq *::after { box-sizing:border-box; }
+.gq {
+  --pile-corps:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --pile-titre:'Unbounded',var(--pile-corps);
+  --pile-mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background-color:var(--paper);
+  background-image:var(--grad-page);
+  background-repeat:no-repeat,no-repeat;
+  background-size:100% 40rem,cover;
+  background-position:left top,left top;
+  color:var(--ink);
+  font-family:var(--pile-corps);
+  font-size:16px;
+  line-height:1.62;
+  padding:clamp(28px,6vw,64px) clamp(20px,5vw,40px) clamp(48px,9vw,96px);
+  overflow:hidden;
+}
+.gq p,.gq ul,.gq ol,.gq h1,.gq h2,.gq h3,.gq figure { margin:0; }
+.gq ul { list-style:none; padding:0; }
+.gq img { display:block; max-width:100%; }
+.gq a { color:var(--ink); text-decoration:underline; text-decoration-thickness:var(--hair); text-underline-offset:.22em; }
+
+.gq-col { max-width:38rem; margin:0 auto; }
+
+/* Les blocs paraissent quand ils entrent dans le cadre. Le mouvement est court
+   et va dans un seul sens : rien ne rebondit, rien ne tourne. */
+.gq .parait { opacity:0; transform:translateY(14px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.gq .parait.vu { opacity:1; transform:none; }
+
+/* Le mouvement se coupe si le système le demande. L'application tient la même
+   règle, et une vitrine qui la contredirait serait incohérente. */
+@media (prefers-reduced-motion: reduce){
+  .gq .parait { opacity:1; transform:none; transition:none; }
+  .gq .respire { animation:none !important; }
+  .gq .trace path { stroke-dashoffset:0 !important; animation:none !important; transition:none !important; }
+}
+
+/* L'en-tête */
+.gq-marque { display:flex; align-items:center; gap:var(--s3); margin-bottom:var(--s7); }
+.gq-marque svg { width:40px; height:40px; flex:none; }
+.gq-marque .nom { font-family:var(--pile-titre); font-weight:600; font-size:22px; letter-spacing:-.01em; }
+
+/* La marque respire, très peu : deux pour cent sur six secondes. Assez pour
+   que le dessin paraisse vivant, trop peu pour qu'on le remarque. */
+.gq .respire { animation:gq-respire 6s ease-in-out infinite; transform-origin:50% 50%; }
+@keyframes gq-respire { 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+
+.gq-surtitre {
+  font-family:var(--pile-mono); font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-2); margin-bottom:var(--s3) !important;
+}
+.gq h1 {
+  font-family:var(--pile-titre); font-weight:600;
+  font-size:clamp(30px,5.4vw,46px); line-height:1.16; letter-spacing:-.02em;
+  margin-bottom:var(--s5) !important;
+}
+.gq h2 {
+  font-family:var(--pile-titre); font-weight:600;
+  font-size:clamp(20px,3vw,26px); line-height:1.25; letter-spacing:-.015em;
+  margin-bottom:var(--s4) !important;
+}
+.gq .accroche { font-size:clamp(17px,2.2vw,20px); line-height:1.5; color:var(--ink-2); }
+
+.gq-section { margin-top:clamp(56px,10vw,104px); }
+.gq-regle { height:0; border-top:var(--hair) solid var(--line-soft); margin:clamp(48px,8vw,88px) 0 0; }
+
+/* La grammaire de contour, le cœur du produit. Les tracés se dessinent, puis
+   la légende paraît. Ce sont les vrais contours de l'application, avec ses
+   amplitudes et ses poids de trait, pas une illustration. */
+.gq-grammaire { display:flex; flex-wrap:wrap; gap:var(--s5) var(--s6); margin-top:var(--s6); }
+.gq-contour { flex:1 1 200px; min-width:180px; }
+.gq-contour .dessin { height:52px; display:flex; align-items:center; }
+.gq-contour .trace path { stroke:var(--ink); fill:none; }
+.gq-contour .etiquette {
+  font-family:var(--pile-mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:var(--s2) !important;
+}
+.gq-contour .sens { font-size:14px; color:var(--ink-2); line-height:1.45; margin-top:var(--s1) !important; }
+.gq-contour .nom-aliment {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:300; color:var(--ink); pointer-events:none;
+}
+.gq-contour .boite { position:relative; display:inline-block; }
+
+.gq-deux-lectures { display:flex; flex-wrap:wrap; gap:var(--s4) var(--s7); margin-top:var(--s6); }
+.gq-deux-lectures div { flex:1 1 220px; }
+.gq-deux-lectures b { display:block; font-family:var(--pile-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s1); }
+
+/* Les écrans. Pas d'ombre, pas de perspective : un trait de contour, comme
+   tout le reste du produit. */
+.gq-ecrans { display:flex; gap:var(--s5); margin-top:var(--s7); overflow-x:auto; padding-bottom:var(--s3); }
+.gq-ecrans figure { flex:none; }
+.gq-ecrans img { width:190px; border:var(--hair) solid var(--ink-4); border-radius:var(--r-tab); }
+.gq-ecrans figcaption {
+  font-family:var(--pile-mono); font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:var(--s3);
+}
+
+/* Ce qu'elle fait. Un trait par ligne, jamais une puce. */
+.gq-traits li { position:relative; padding:var(--s4) 0 var(--s4) var(--s6); border-top:var(--hair) solid var(--line-soft); }
+.gq-traits li:last-child { border-bottom:var(--hair) solid var(--line-soft); }
+.gq-traits li::before { content:""; position:absolute; left:0; top:calc(var(--s4) + .68em); width:var(--s4); border-top:var(--hair) solid var(--ink); }
+.gq-traits b { font-weight:600; }
+
+.gq-portes { margin-top:var(--s6); display:flex; flex-wrap:wrap; gap:var(--s3); }
+.gq-portes a {
+  flex:1 1 240px; display:block; text-decoration:none;
+  border:var(--hair) solid var(--ink-4); border-radius:var(--r-surface);
+  padding:var(--s4) var(--s5); transition:border-color .3s var(--ease);
+}
+.gq-portes a:hover, .gq-portes a:focus-visible { border-color:var(--ink); }
+.gq-portes .titre { display:block; font-weight:600; font-size:15px; }
+.gq-portes .quoi { display:block; color:var(--ink-2); font-size:13px; line-height:1.45; margin-top:var(--s1); }
+
+.gq-pied { margin-top:clamp(48px,8vw,80px); padding-top:var(--s5); border-top:var(--hair) solid var(--line-soft); font-size:13px; color:var(--ink-3); }
+.gq-pied p + p { margin-top:var(--s2) !important; }
+</style>
+
+<div class="gq-col">
+
+  <div class="gq-marque parait">
+    <!-- MARQUE -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="respire" width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" focusable="false"> <defs> <radialGradient id="gqsun" cx="34%" cy="28%" r="78%"> <stop offset="0%" stop-color="#FFE24F"/> <stop offset="52%" stop-color="#FFEC93"/> <stop offset="100%" stop-color="#FFF6CF"/> </radialGradient> </defs> <path d="M84.8 40.7Q92.4 50 84.8 59.3Q77.7 66 75.5 75.5Q71.2 86.7 59.3 84.8Q50 82 40.7 84.8Q28.8 86.7 24.5 75.5Q22.3 66 15.2 59.3Q7.6 50 15.2 40.7Q22.3 34 24.5 24.5Q28.8 13.3 40.7 15.2Q50 18 59.3 15.2Q71.2 13.3 75.5 24.5Q77.7 34 84.8 40.7Z" fill="url(#gqsun)" stroke="#111" stroke-width="2"/> <ellipse cx="39.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> <ellipse cx="60.5" cy="47" rx="3.4" ry="3.4" fill="#111"/> </svg>
+    <!-- /MARQUE -->
+    <span class="nom">GutQuest</span>
+  </div>
+
+  <p class="gq-surtitre parait">Prochainement</p>
+  <h1 class="parait">Le protocole FODMAP,<br>aliment par aliment</h1>
+  <p class="accroche parait">GutQuest s'adresse aux personnes qui vivent avec un syndrome de l'intestin irritable. Elle sert la phase que les autres outils laissent de côté : la réintroduction, jusqu'à connaître son propre seuil pour chaque aliment.</p>
+
+  <div class="gq-regle"></div>
+
+  <section class="gq-section">
+    <p class="gq-surtitre parait">Un contour, deux lectures</p>
+    <h2 class="parait">Tout se lit à la forme du trait</h2>
+    <p class="parait" style="color:var(--ink-2);max-width:34rem">Aucune information ne passe par la couleur. Le contour d'un aliment porte deux axes indépendants, et il suffit de le regarder pour savoir où l'on en est.</p>
+
+    <div class="gq-grammaire" id="gq-grammaire"></div>
+
+    <div class="gq-deux-lectures parait">
+      <div><b>Le trait dit la source</b>En pointillé, l'information vient du catalogue. En trait plein, elle vient de vos propres tests.</div>
+      <div><b>L'ondulation dit le niveau</b>Lisse quand l'aliment passe, douce quand il demande de la prudence, marquée quand il est à la limite.</div>
+    </div>
+  </section>
+
+  <div class="gq-regle"></div>
+
+  <section class="gq-section">
+    <p class="gq-surtitre parait">Dans l'application</p>
+    <h2 class="parait">Trois écrans, et la boucle du quotidien</h2>
+
+    <div class="gq-ecrans">
+      <figure class="parait"><img src="https://infos.gut-quest.com/ecran-01-accueil.png" width="417" height="880" alt="L'accueil : l'état du ventre, la phase en cours et le test du jour."><figcaption>L'accueil</figcaption></figure>
+      <figure class="parait"><img src="https://infos.gut-quest.com/ecran-02-explorer.png" width="417" height="880" alt="Le catalogue : chaque aliment est cerné d'un contour qui dit son niveau et d'où vient l'information."><figcaption>Le catalogue</figcaption></figure>
+      <figure class="parait"><img src="https://infos.gut-quest.com/ecran-03-fiche-aliment.png" width="417" height="880" alt="La fiche d'un aliment : la portion conseillée, le seuil personnel et l'historique des tests."><figcaption>La fiche d'un aliment</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="gq-regle"></div>
+
+  <section class="gq-section">
+    <h2 class="parait">Ce qu'elle fait</h2>
+    <ul class="gq-traits">
+      <li class="parait"><b>Un catalogue de 344 aliments</b>, avec la portion conseillée pour chacun, et 111 recettes filtrées selon la phase où vous en êtes.</li>
+      <li class="parait"><b>Le test d'un aliment sur 3 jours</b>, à portions croissantes, qui s'arrête de lui-même dès que ça coince. Le jour où ça coince fixe le seuil.</li>
+      <li class="parait"><b>Un journal du ressenti</b> : l'état du ventre et les symptômes, en deux minutes, sans avoir à noter chaque repas.</li>
+      <li class="parait"><b>Un chemin de célébrations</b> : un éclat par aliment apprivoisé, que le résultat soit bon ou non. On célèbre d'avoir appris.</li>
+      <li class="parait"><b>Un compte facultatif.</b> L'application démarre sans, et ne le réclame jamais.</li>
+    </ul>
+  </section>
+
+  <section class="gq-section">
+    <h2 class="parait">Ce qu'elle ne fait pas</h2>
+    <p class="parait" style="color:var(--ink-2)">Pas de série à tenir, pas de comparaison avec qui que ce soit, aucune relance culpabilisante. Une mauvaise journée n'efface rien et ne coûte rien.</p>
+    <p class="parait" style="color:var(--ink-2);margin-top:var(--s4) !important">Elle ne pose aucun diagnostic et ne remplace ni votre gastro-entérologue, ni votre diététicien ou diététicienne. En cas de doute, de symptôme nouveau ou de perte de poids, parlez-en à un professionnel de santé.</p>
+  </section>
+
+  <div class="gq-regle"></div>
+
+  <section class="gq-section">
+    <p class="gq-surtitre parait">Local d'abord</p>
+    <h2 class="parait">Vos données ne quittent pas votre téléphone</h2>
+    <p class="parait" style="color:var(--ink-2)">Ce que vous consignez, vos tests, vos ressentis, vos symptômes, vos seuils, reste dans une base chiffrée sur votre appareil. Ces données ne sont pas envoyées sur un serveur, et l'éditrice n'y a aucun accès. Ce n'est pas une promesse d'usage : c'est une propriété de l'architecture.</p>
+
+    <ul class="gq-portes parait">
+      <li style="display:contents"><a href="https://infos.gut-quest.com/confidentialite.html">
+        <span class="titre">Politique de confidentialité</span>
+        <span class="quoi">Ce qui reste sur l'appareil, ce qui est traité en ligne, les bases légales et vos droits.</span>
+      </a></li>
+      <li style="display:contents"><a href="https://infos.gut-quest.com/suppression-compte.html">
+        <span class="titre">Supprimer son compte</span>
+        <span class="quoi">Comment demander l'effacement, depuis l'application ou depuis cette page.</span>
+      </a></li>
+    </ul>
+  </section>
+
+  <footer class="gq-pied parait">
+    <p>GutQuest, édité par Emilie Thonat. Contact : <a href="mailto:contact@gut-quest.com">contact@gut-quest.com</a>.</p>
+    <p>Application en préparation, pas encore disponible au téléchargement. Les écrans montrés ici sont ceux du prototype.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var racine = document.currentScript.closest('.gq');
+  var douceur = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Le contour d'une pill, repris de l'application au paramètre près.
+     Un point du stade, et sa normale : l'ondulation pousse alternativement
+     vers l'extérieur et vers l'intérieur, le long du périmètre. */
+  function pointStade(t, w, h){
+    var r = h/2, sl = Math.max(0, w-h), rc = Math.PI*r, a;
+    if (t < sl) return {x:r+t, y:0, nx:0, ny:-1};
+    t -= sl;
+    if (t < rc){ a = -Math.PI/2 + t/r; return {x:r+sl+r*Math.cos(a), y:r+r*Math.sin(a), nx:Math.cos(a), ny:Math.sin(a)}; }
+    t -= rc;
+    if (t < sl) return {x:r+sl-t, y:h, nx:0, ny:1};
+    t -= sl;
+    a = Math.PI/2 + t/r;
+    return {x:r+r*Math.cos(a), y:r+r*Math.sin(a), nx:Math.cos(a), ny:Math.sin(a)};
+  }
+
+  /* Autant de vagues sur chaque arrondi que sur chaque côté, en nombre pair :
+     sans quoi l'ondulation se referme sur un décrochement. */
+  function contour(w, h, amp, pas, marge){
+    var r = h/2, sl = Math.max(0, w-h), capL = Math.PI*r;
+    var pair = function(x){ return Math.max(4, 2*Math.round(x/2)); };
+    var nCote = pair(sl/pas), nCap = pair(capL/pas), ts = [], i;
+    for (i=0;i<nCote;i++) ts.push(sl*i/nCote);
+    for (i=0;i<nCap;i++)  ts.push(sl + capL*i/nCap);
+    for (i=0;i<nCote;i++) ts.push(sl + capL + sl*i/nCote);
+    for (i=0;i<nCap;i++)  ts.push(sl + capL + sl + capL*i/nCap);
+    var pts = ts.map(function(t, i){
+      var p = pointStade(t, w, h), a = amp*(i%2 ? 1 : -1);
+      return [p.x + p.nx*a + marge, p.y + p.ny*a + marge];
+    });
+    var n = pts.length, d = 'M'+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
+    for (i=0;i<n;i++){
+      var p0=pts[(i-1+n)%n], p1=pts[i], p2=pts[(i+1)%n], p3=pts[(i+2)%n];
+      d += ' C'+(p1[0]+(p2[0]-p0[0])/6).toFixed(1)+' '+(p1[1]+(p2[1]-p0[1])/6).toFixed(1)
+         + ' '+(p2[0]-(p3[0]-p1[0])/6).toFixed(1)+' '+(p2[1]-(p3[1]-p1[1])/6).toFixed(1)
+         + ' '+p2[0].toFixed(1)+' '+p2[1].toFixed(1);
+    }
+    return d + ' Z';
+  }
+
+  /* Les quatre cas que la grammaire distingue. Amplitudes et poids de trait
+     sont ceux de l'application : 0,02 lisse, 0,7 douce, 1,4 marquée, et
+     0,5 px en trait plein contre 1 px pointillé. */
+  var CAS = [
+    { nom:'Mangue',   amp:0.02, pas:3.4, plein:true,  etiquette:'Testé · toléré',    sens:'Vos tests ont conclu : il passe.' },
+    { nom:'Avocat',   amp:1.4,  pas:3.0, plein:false, etiquette:'Catalogue · limite', sens:'Annoncé limite, jamais testé par vous.' },
+    { nom:'Ail',      amp:0.7,  pas:3.1, plein:false, etiquette:'Catalogue · sensible', sens:'À approcher avec prudence.' },
+    { nom:'Oignon',   amp:1.4,  pas:3.0, plein:true,  etiquette:'Testé · limite',    sens:'Votre seuil est connu, et il est bas.' }
+  ];
+
+  var hote = racine.querySelector('#gq-grammaire');
+  var H = 34, MARGE = 7;
+
+  CAS.forEach(function(cas, i){
+    var largeur = 46 + cas.nom.length*7.6;
+    var ech = H/24, amp = cas.amp*ech, pas = cas.pas*ech;
+    var d = contour(largeur-1, H-1, amp, pas, MARGE + 0.5);
+    var trait = cas.plein
+      ? 'stroke-width="0.5"'
+      : 'stroke-width="1" stroke-dasharray="0.1 2" stroke-linecap="round"';
+
+    var bloc = document.createElement('div');
+    bloc.className = 'gq-contour parait';
+    bloc.innerHTML =
+      '<div class="dessin"><div class="boite" style="width:'+(largeur+2*MARGE)+'px;height:'+(H+2*MARGE)+'px">'
+      + '<svg class="trace" width="'+(largeur+2*MARGE)+'" height="'+(H+2*MARGE)+'" viewBox="0 0 '+(largeur+2*MARGE)+' '+(H+2*MARGE)+'" aria-hidden="true">'
+      + '<path d="'+d+'" '+trait+'/></svg>'
+      + '<span class="nom-aliment">'+cas.nom+'</span></div></div>'
+      + '<p class="etiquette">'+cas.etiquette+'</p>'
+      + '<p class="sens">'+cas.sens+'</p>';
+    hote.appendChild(bloc);
+
+    /* Le tracé se dessine plutôt que d'apparaître. Sur un contour pointillé,
+       animer le décalage déplacerait les points : on l'ouvre alors en opacité. */
+    if (!douceur){
+      var chemin = bloc.querySelector('path');
+      if (cas.plein){
+        var L = chemin.getTotalLength();
+        chemin.style.strokeDasharray = L;
+        chemin.style.strokeDashoffset = L;
+        chemin.style.transition = 'stroke-dashoffset 1.5s var(--ease) ' + (0.15*i) + 's';
+        bloc.dataset.trace = 'longueur';
+      } else {
+        chemin.style.opacity = 0;
+        chemin.style.transition = 'opacity .9s var(--ease) ' + (0.15*i + 0.2) + 's';
+        bloc.dataset.trace = 'opacite';
+      }
+    }
+  });
+
+  /* Ce qui paraît, paraît une fois. Sans observateur disponible, tout est
+     visible d'emblée : une vitrine ne doit jamais rester blanche. */
+  var aParaitre = racine.querySelectorAll('.parait');
+  if (!('IntersectionObserver' in window) || douceur){
+    aParaitre.forEach(function(el){ el.classList.add('vu'); });
+    racine.querySelectorAll('.gq-contour path').forEach(function(p){
+      p.style.strokeDashoffset = 0; p.style.opacity = 1;
+    });
+    return;
+  }
+
+  var vus = new IntersectionObserver(function(entrees){
+    entrees.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('vu');
+      if (el.dataset.trace === 'longueur') el.querySelector('path').style.strokeDashoffset = 0;
+      if (el.dataset.trace === 'opacite')  el.querySelector('path').style.opacity = 1;
+      vus.unobserve(el);
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.15 });
+
+  aParaitre.forEach(function(el, i){
+    el.style.transitionDelay = (Math.min(i,6) * 0.06) + 's';
+    vus.observe(el);
+  });
+})();
+</script>
+</div>
+<!-- ===================== FIN DU BLOC ===================== -->
+
+</body>
+</html>
