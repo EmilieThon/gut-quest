@@ -9,6 +9,11 @@
     --ink-3:rgba(17,17,17,.60);  /* 4.87:1 · labels, placeholders, états à venir */
     --ink-4:rgba(17,17,17,.45);  /* 3.01:1 · contours de composants : champs, radios, onglets, chips */
     --line-soft:rgba(17,17,17,.12);  /* 1.29:1 · séparateurs de liste */
+    --etat-serein:#F0F2A0;  /* halo de l'etat serein · jaune-vert */
+    --etat-tranquille:#FFE87A;  /* halo de l'etat tranquille · jaune */
+    --etat-sensible:#FFD27A;  /* halo de l'etat sensible · jaune chaud */
+    --etat-agite:#FFB37A;  /* halo de l'etat agite · orange doux */
+    --etat-fatigue:#D5E6DC;  /* halo de l'etat fatigue · vert-bleu pale */
     /* typographie */
     --f-display:'Unbounded';--f-body:'Hanken Grotesk';--f-mono:'DM Mono';
     --t0:20px;  /* titre de fiche */
