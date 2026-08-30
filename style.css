@@ -11,7 +11,7 @@
    commencer par envoyer l'adresse de qui la lit à un tiers. */
 
 :root {
-  --echelle: 1.34;
+  --echelle: 1.26;
   /* La largeur de la colonne. Ce qui reste de vide sur les côtés n'est pas
      une marge : c'est le reste du centrage, soit (largeur de fenêtre moins
      cette valeur) divisé par deux. C'est donc ici, et nulle part ailleurs,
@@ -43,7 +43,10 @@ body {
   font-family: var(--pile-corps);
   font-size: calc(var(--body) * var(--echelle));
   line-height: 1.62;
-  padding: var(--s7) var(--s4) calc(var(--s7) * 2);
+  /* De l'air en haut, avant le nom : une page de droit qui commence au ras
+     du bord se lit comme un document imposé. Le haut suit la hauteur de la
+     fenêtre, avec un plancher pour les petits écrans. */
+  padding: clamp(var(--s7), 6vh, 72px) var(--s4) calc(var(--s7) * 2);
 }
 
 .page { max-width: var(--mesure); margin: 0 auto; }
