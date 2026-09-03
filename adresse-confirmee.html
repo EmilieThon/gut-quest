@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adresse confirmée · GutQuest</title>
+<meta name="description" content="Page d'arrivée après le clic dans le courriel de confirmation d'adresse GutQuest.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GutQuest">
+<meta property="og:url" content="https://gut-quest.com/adresse-confirmee.html">
+<meta property="og:image" content="https://gut-quest.com/partage-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="jetons.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+
+  <a class="retour" href="index.html">GutQuest</a>
+
+  <p class="surtitre">Compte</p>
+
+  <div id="fait">
+    <h1>Ton adresse est confirmée</h1>
+
+    <p class="accroche">Ton compte est actif. Tu peux fermer cette page et revenir dans l'application : elle te reconnaîtra à la prochaine ouverture.</p>
+  </div>
+
+  <div id="deja" hidden>
+    <h1>Ce lien a déjà servi</h1>
+
+    <p class="accroche">Un lien de confirmation ne vaut qu'une fois. Si tu viens de cliquer une seconde fois, ton adresse est déjà confirmée et il n'y a rien à faire : reviens simplement dans l'application.</p>
+
+    <p>Si tu n'as jamais réussi à confirmer, le lien a passé son délai. Redemande une confirmation depuis l'écran de compte, un nouveau courriel partira.</p>
+  </div>
+
+  <div class="cadre">
+    <h3>Ce que ce compte porte, et ce qu'il ne porte pas</h3>
+    <p>Il ne sert qu'à garder une sauvegarde chiffrée, que toi seul.e peux rouvrir. Tes tests, tes ressentis et tes seuils vivent dans une base chiffrée sur ton téléphone : ils ne quittent jamais l'appareil, et l'éditeur ne peut pas les lire.</p>
+    <p>L'application fonctionne entièrement sans compte. Celui-ci n'existe que pour retrouver tes données si tu changes de téléphone.</p>
+  </div>
+
+  <footer class="pied">
+    <p>GutQuest, édité par Emilie Thonat. Contact : <a href="mailto:contact@gut-quest.com">contact@gut-quest.com</a>.</p>
+    <p><a href="index.html">Retour à l'accueil</a> · <a href="confidentialite.html">Politique de confidentialité</a> · <a href="suppression-compte.html">Supprimer son compte</a></p>
+  </footer>
+
+</main>
+
+<script>
+/* Supabase renvoie ici après avoir vérifié le jeton. Quand la vérification
+   échoue, jeton déjà consommé ou délai passé, il pose l'erreur soit dans le
+   fragment, soit dans la requête. Le fragment ne quitte jamais le navigateur :
+   cette page ne fait aucune requête sortante, conformément au reste du site.
+
+   Le cas affiché sans script est le succès, parce que c'est le cas courant :
+   une page qui ne bascule pas dit la vérité neuf fois sur dix. */
+(function () {
+  var source = (location.hash || '').replace(/^#/, '') || (location.search || '').replace(/^\?/, '');
+  if (!source) return;
+  var erreur = new URLSearchParams(source).get('error');
+  if (!erreur) return;
+  var fait = document.getElementById('fait');
+  var deja = document.getElementById('deja');
+  if (!fait || !deja) return;
+  fait.hidden = true;
+  deja.hidden = false;
+  document.title = 'Lien déjà servi · GutQuest';
+})();
+</script>
+
+</body>
+</html>

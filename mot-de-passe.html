@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nouveau mot de passe · GutQuest</title>
+<meta name="description" content="Choisir un nouveau mot de passe pour son compte GutQuest, depuis le lien reçu par courriel.">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="stylesheet" href="jetons.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Les seules formes que le site n'avait pas encore : un champ et un bouton.
+     Aucune couleur propre, aucune mesure propre : tout vient des jetons. */
+  .champ {
+    display: block; width: 100%; box-sizing: border-box;
+    margin: 0 0 var(--s4);
+    padding: var(--s3) var(--s4);
+    font: inherit; font-size: calc(var(--t3) * var(--echelle));
+    color: var(--ink); background: var(--paper);
+    border: var(--hair) solid var(--ink-4);
+    border-radius: var(--r-surface);
+  }
+  .champ:focus-visible { outline: var(--hair) solid var(--ink); outline-offset: 2px; }
+  .bouton {
+    display: inline-block; padding: var(--s3) var(--s5);
+    font: inherit; font-size: calc(var(--t3) * var(--echelle));
+    color: var(--paper); background: var(--ink);
+    border: 0; border-radius: var(--r-pill); cursor: pointer;
+  }
+  .bouton[disabled] { opacity: .45; cursor: default; }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <a class="retour" href="index.html">GutQuest</a>
+
+  <p class="surtitre">Compte</p>
+
+  <div id="saisie" hidden>
+    <h1>Choisis un nouveau mot de passe</h1>
+
+    <p class="accroche">Six caractères au moins. Il ouvre ton compte, et lui seul : ta sauvegarde reste scellée par sa propre phrase, que personne d'autre que toi ne connaît.</p>
+
+    <form id="form" autocomplete="on">
+      <label for="mdp">Nouveau mot de passe</label>
+      <input class="champ" id="mdp" name="new-password" type="password" autocomplete="new-password" minlength="6" required>
+      <button class="bouton" id="valider" type="submit">Enregistrer</button>
+    </form>
+
+    <p id="dire" role="status" aria-live="polite"></p>
+  </div>
+
+  <div id="fait" hidden>
+    <h1>Ton mot de passe est changé</h1>
+    <p class="accroche">Reviens dans l'application et connecte-toi avec ce nouveau mot de passe.</p>
+  </div>
+
+  <div id="sansjeton">
+    <h1>Ce lien n'est plus valable</h1>
+    <p class="accroche">Un lien de réinitialisation ne vaut qu'une fois, et il expire au bout d'une heure. Redemande-en un depuis l'écran de connexion de l'application.</p>
+  </div>
+
+  <div class="cadre">
+    <h3>Deux secrets, et ils ne se remplacent pas</h3>
+    <p>Le mot de passe ouvre ton compte, et c'est celui-ci que tu changes ici. La phrase de ta sauvegarde ouvre ton fichier chiffré : personne ne la connaît, l'éditeur pas davantage, et elle ne se retrouve pas. Changer l'un ne touche pas l'autre.</p>
+  </div>
+
+  <footer class="pied">
+    <p>GutQuest, édité par Emilie Thonat. Contact : <a href="mailto:contact@gut-quest.com">contact@gut-quest.com</a>.</p>
+    <p><a href="index.html">Retour à l'accueil</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+  </footer>
+
+</main>
+
+<script>
+/* CETTE PAGE NE CHARGE AUCUNE BIBLIOTHÈQUE, et surtout pas le SDK Supabase :
+   changer un mot de passe est un seul appel, `PUT /auth/v1/user`, jeton en
+   en-tête. Le site promet qu'aucune ressource tierce ne se charge à
+   l'ouverture, et cette page tient la promesse : le seul appel réseau part
+   quand la personne appuie sur le bouton, vers l'API du projet, et nulle part
+   ailleurs. Aucune police distante, aucune mesure d'audience, aucun témoin.
+
+   LE JETON VIT DANS LE FRAGMENT, donc il ne quitte jamais le navigateur : un
+   fragment n'est pas envoyé au serveur qui sert la page, et Pages GitHub n'en
+   voit rien. Il est effacé de la barre d'adresse dès qu'il est lu, pour qu'il
+   ne reste ni dans l'historique ni dans un partage d'écran. */
+(function () {
+  var CLE = 'sb_publishable_DIJqN6fm-m17mn-2_NCHNw_LeS2ziZc';
+  var API = 'https://slvketsbwmrvsoyeyjzq.supabase.co/auth/v1/user';
+
+  var saisie = document.getElementById('saisie');
+  var fait = document.getElementById('fait');
+  var sansjeton = document.getElementById('sansjeton');
+  var dire = document.getElementById('dire');
+  var champ = document.getElementById('mdp');
+  var valider = document.getElementById('valider');
+
+  var params = new URLSearchParams((location.hash || '').replace(/^#/, ''));
+  var jeton = params.get('access_token');
+  var type = params.get('type');
+
+  if (!jeton || type !== 'recovery') return;
+
+  /* Le jeton est en main : on l'ôte de l'adresse avant toute chose. */
+  history.replaceState(null, '', location.pathname);
+  sansjeton.hidden = true;
+  saisie.hidden = false;
+  document.title = 'Choisir un mot de passe · GutQuest';
+
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var mdp = champ.value;
+    if (mdp.length < 6) { dire.textContent = 'Six caractères au moins.'; return; }
+    valider.disabled = true;
+    dire.textContent = 'Un instant…';
+
+    fetch(API, {
+      method: 'PUT',
+      headers: { 'apikey': CLE, 'Authorization': 'Bearer ' + jeton, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: mdp }),
+    }).then(function (r) {
+      if (r.ok) {
+        saisie.hidden = true;
+        fait.hidden = false;
+        document.title = 'Mot de passe changé · GutQuest';
+        return;
+      }
+      valider.disabled = false;
+      return r.json().then(function (d) {
+        /* Chaque refus dit lequel il est, comme dans l'application : « ça n'a
+           pas marché » ferait deviner entre un lien périmé et un mot de passe
+           refusé, qui n'appellent pas les mêmes gestes. */
+        var m = ((d && (d.msg || d.error_description || d.message)) || '').toLowerCase();
+        dire.textContent = (r.status === 401 || r.status === 403 || m.indexOf('expired') >= 0)
+          ? 'Ce lien a expiré. Redemande un courriel depuis l’application.'
+          : (m.indexOf('password') >= 0 || m.indexOf('weak') >= 0)
+            ? 'Ce mot de passe est refusé. Essaie-en un plus long.'
+            : 'Quelque chose a échoué en route. Ton mot de passe n’a pas changé.';
+      });
+    }).catch(function () {
+      valider.disabled = false;
+      dire.textContent = 'Pas de réseau. Ton mot de passe n’a pas changé.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

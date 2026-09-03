@@ -21,7 +21,7 @@
 
   <a class="retour" href="index.html">GutQuest</a>
 
-  <p class="surtitre">Version 2 · 29 août 2026</p>
+  <p class="surtitre">Version 3 · 3 septembre 2026</p>
   <h1>Politique de confidentialité</h1>
 
   <h2>1. Le principe, avant tout le reste</h2>
@@ -76,6 +76,7 @@
       <tr><td>Adresse électronique, ou identité Google ou Apple</td><td>Rattacher une sauvegarde à une personne</td><td>Exécution du contrat, art. 6§1(b)</td></tr>
       <tr><td>Sauvegarde chiffrée, sous forme d'un bloc opaque</td><td>Permettre de retrouver ses données après une perte d'appareil</td><td>Exécution du contrat, art. 6§1(b)</td></tr>
       <tr><td>Catalogue des aliments et des recettes</td><td>Servir le référentiel commun</td><td>Intérêt légitime, art. 6§1(f), aucune donnée personnelle en jeu</td></tr>
+      <tr><td>Adresse électronique, le temps d'un envoi</td><td>Expédier les deux seuls courriels du produit : la confirmation d'adresse et le changement de mot de passe</td><td>Exécution du contrat, art. 6§1(b)</td></tr>
     </tbody>
   </table>
   </div>
@@ -94,16 +95,19 @@
 
   <h2>6. Qui a accès aux données</h2>
 
-  <p><strong>Sous-traitant, un seul.</strong></p>
+  <p><strong>Deux sous-traitants, et rien de plus.</strong></p>
 
   <div class="tableau">
   <table>
     <tbody>
       <tr><th>Sous-traitant</th><th>Rôle</th><th>Localisation</th><th>Ce qu'il détient</th></tr>
       <tr><td>Supabase</td><td>Hébergement du catalogue public, de l'authentification et du bloc de sauvegarde</td><td>Union européenne</td><td>Une identité, et un bloc chiffré qu'il ne peut pas lire</td></tr>
+      <tr><td>Google (messagerie du domaine)</td><td>Acheminer les deux courriels de compte : confirmation d'adresse, changement de mot de passe</td><td>Union européenne et États-Unis</td><td>L'adresse destinataire et la date de l'envoi. Aucune donnée de santé : ces courriels ne nomment ni aliment, ni symptôme, ni seuil</td></tr>
     </tbody>
   </table>
   </div>
+
+  <p><strong>Ce que Google voit, et ce qu'il ne voit pas.</strong> Les courriels partent de l'adresse du domaine, servie par la messagerie de Google. Google achemine donc l'adresse à laquelle le message est adressé, et en garde une copie dans la boîte d'envoi de l'éditeur. Il n'y voit aucune donnée de santé : ces deux messages ne portent qu'une phrase sur le rôle du compte et un lien. Le fait même d'avoir ouvert un compte GutQuest est en revanche une information que cette copie conserve, et c'est la raison pour laquelle elle est déclarée ici plutôt que passée sous silence.</p>
 
   <p><strong>Personne d'autre.</strong> Aucun service tiers d'analyse d'audience, aucun traceur publicitaire, aucun outil de mesure comportementale, aucune notification poussée. Ce site lui-même ne charge aucune ressource extérieure et ne dépose aucun témoin de connexion.</p>
 
@@ -155,14 +159,16 @@
 
   <h2>10. Transferts hors Union européenne</h2>
 
-  <p>Aucun. L'hébergement est situé dans l'Union européenne, et il n'existe aucun service de notification poussée, donc aucun flux technique sortant.</p>
+  <p><strong>Un seul, et il se limite à une adresse.</strong> L'hébergement des données reste situé dans l'Union européenne, et il n'existe aucun service de notification poussée. Le seul flux susceptible de sortir de l'Union est l'acheminement des deux courriels de compte par la messagerie de Google, dont l'infrastructure est mondiale. Ce qui transite alors est l'adresse électronique du destinataire et la date de l'envoi, jamais une donnée de santé.</p>
+
+  <p>Ce transfert est encadré par les clauses contractuelles types de la Commission européenne, que Google applique à ses services de messagerie professionnelle. Il n'a lieu qu'au moment d'un envoi, et cesse avec la suppression du compte, à ceci près que la copie conservée dans la boîte d'envoi de l'éditeur est purgée manuellement : la demander à l'adresse de contact suffit à l'obtenir sans délai.</p>
 
   <h2>11. Modification de cette politique</h2>
 
   <p>Toute évolution de cette politique est publiée sur cette page, avec sa date. La version en vigueur est celle qui porte la date la plus récente en tête de page.</p>
 
   <footer class="pied">
-    <p>Dernière mise à jour : 29 août 2026.</p>
+    <p>Dernière mise à jour : 3 septembre 2026.</p>
     <p><a href="index.html">Retour à l'accueil</a> · <a href="suppression-compte.html">Supprimer son compte</a></p>
   </footer>
 
