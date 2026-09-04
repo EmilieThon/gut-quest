@@ -151,7 +151,7 @@
 
   <ul>
     <li>Base locale <strong>chiffrée</strong> sur l'appareil, clé générée aléatoirement au premier lancement et conservée dans le magasin sécurisé du système (Keychain iOS, Keystore Android), jamais dans l'application.</li>
-    <li>Sauvegarde <strong>chiffrée avant envoi</strong>, en AES-256-GCM, avec une clé dérivée par fonction de dérivation à sel aléatoire depuis une phrase secrète choisie par la personne.</li>
+    <li>Sauvegarde <strong>chiffrée avant envoi</strong>, en XChaCha20-Poly1305, avec une clé dérivée par scrypt, fonction de dérivation à sel aléatoire depuis une phrase secrète choisie par la personne.</li>
     <li>Données en transit protégées par TLS.</li>
     <li>Catalogue exposé en <strong>lecture seule</strong>, aucune fonction sensible publiée.</li>
     <li>Minimisation : le compte ne porte qu'une identité, pas un profil.</li>
