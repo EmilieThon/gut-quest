@@ -9,16 +9,14 @@
     --ink-3:rgba(17,17,17,.60);  /* 4.87:1 · labels, placeholders, états à venir */
     --ink-4:rgba(17,17,17,.45);  /* 3.01:1 · contours de composants : champs, radios, onglets, chips */
     --line-soft:rgba(17,17,17,.12);  /* 1.29:1 · séparateurs de liste */
-    --etat-serein:#F0F2A0;  /* halo de l'etat serein · jaune-vert */
+    --etat-serein:#FFF2A0;  /* halo de l'etat serein · jaune pâle */
     --etat-tranquille:#FFE87A;  /* halo de l'etat tranquille · jaune */
     --etat-sensible:#FFD27A;  /* halo de l'etat sensible · jaune chaud */
-    --etat-agite:#FFB37A;  /* halo de l'etat agite · orange doux */
+    --etat-agite:#FFB866;  /* halo de l'etat agite · orange doux */
     --etat-fatigue:#D5E6DC;  /* halo de l'etat fatigue · vert-bleu pale */
     /* typographie */
     --f-display:'Unbounded';--f-body:'Hanken Grotesk';--f-mono:'DM Mono';
-    --t0:20px;  /* titre de fiche */
-    --t1:18px;  /* titre d'écran, état du Gut */
-    --t2:16px;  /* titre de modale, accroche de page */
+    --t1:18px;  /* le seul niveau de titre du produit : titre d'écran, état de Gut, titre de fiche en pastille, titre de feuille et de modale, accroche de page, dose du jour (arbitrage du 3 septembre 2026 : trois niveaux 20, 18, 16 rassemblés en un seul) */
     --nom:15px;  /* nom de ligne de liste et d'accordéon */
     --val:14px;  /* valeurs clés, nom de phase */
     --t3:13px;  /* ligne interactive */
@@ -33,7 +31,7 @@
     --carte:26px;  /* titre d'une carte d'onboarding */
     --rubrique:9px;  /* rubrique d'une carte d'onboarding */
     /* espacement */
-    --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:20px;--s6:24px;--s7:32px;--gut:26px;
+    --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s45:18px;--s5:20px;--s6:24px;--s7:32px;--gut:26px;--serre:10px;
     /* forme */
     --r-surface:8px;  /* modales, popups, toasts */
     --r-tab:14px;  /* onglets de phase */
@@ -50,4 +48,9 @@
     --pop:cubic-bezier(.3,1.45,.45,1);
     /* dégradé de page */
     --grad-page:radial-gradient(120% 56% at 28% 12%,#FFE24F,#FFEC93 40%,#FFF6CF 62%,rgba(255,246,207,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);
+    --grad-page-serein:radial-gradient(120% 56% at 28% 12%,#FFF2A0,#FFF6C2 40%,#FFFAE1 62%,rgba(255,250,225,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);  /* l'accueil, état serein */
+    --grad-page-tranquille:radial-gradient(120% 56% at 28% 12%,#FFE87A,#FFF0AC 40%,#FFF8D7 62%,rgba(255,248,215,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);  /* l'accueil, état tranquille */
+    --grad-page-sensible:radial-gradient(120% 56% at 28% 12%,#FFD27A,#FFE3AC 40%,#FFF2D7 62%,rgba(255,242,215,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);  /* l'accueil, état sensible */
+    --grad-page-agite:radial-gradient(120% 56% at 28% 12%,#FFB866,#FFD4A0 40%,#FFECD2 62%,rgba(255,236,210,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);  /* l'accueil, état agite */
+    --grad-page-fatigue:radial-gradient(120% 56% at 28% 12%,#D5E6DC,#E6EFE6 40%,#F5F7F0 62%,rgba(245,247,240,0) 100%),linear-gradient(180deg,#FFFDF6 0%,#FFFCEE 45%,#FFFBEC 100%);  /* l'accueil, état fatigue */
   }

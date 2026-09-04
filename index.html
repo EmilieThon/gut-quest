@@ -167,12 +167,17 @@ body {
   position: relative;
   background: var(--paper);
 }
-.appareil .vitre iframe {
+/* Le film occupe la vitre entière. Il est tourné à 696 sur 1468, le double des
+   348 sur 734 de la vitre, pour rester net sur un écran dense ; le navigateur
+   le ramène à la taille utile. L'iframe d'avant demandait une mise à l'échelle
+   par transform, parce qu'une page se rend à sa taille de départ ; une vidéo,
+   elle, se redimensionne d'elle-même. */
+.appareil .vitre video {
   position: absolute; top: 0; left: 0;
-  width: 348px; height: 734px;
+  width: 100%; height: 100%;
+  object-fit: cover;
   border: 0;
-  transform: scale(calc(var(--h) / 734px));
-  transform-origin: top left;
+  display: block;
 }
 
 /* Le trait de l'écran. Il est posé par le cadre, en superposition, et non par
@@ -346,7 +351,7 @@ body {
           </svg>
     <div>
       <h1 class="nom">GutQuest</h1>
-      <p class="tagline">Le protocole FODMAP, aliment par aliment.</p>
+      <p class="tagline">L’app qui t’accompagne dans le low FODMAP.</p>
     </div>
   </header>
 
@@ -387,24 +392,47 @@ body {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches)
     document.querySelectorAll('.marque animate').forEach(a => a.remove());
 
-  /* 2. Au-dessus de 720 px, la capture cède la place au prototype vivant : on
-        peut le parcourir. En dessous, elle reste, et c'est délibéré. Mesuré :
-        à 375 px le prototype tomberait à 10,3 px de corps de texte, et un doigt
-        qui glisse sur le cadre ferait défiler l'iframe et non la page.
+  /* 2. Au-dessus de 720 px, la capture cède la place à la démonstration filmée.
+        En dessous, elle reste, et c'est délibéré : un téléphone n'a pas à
+        télécharger un film qu'il ne montrera pas.
 
-        Le remplacement se fait en script et non par une règle d'affichage :
-        une iframe cachée se charge quand même, et un téléphone n'a pas à
-        télécharger 312 Ko qu'il ne montrera pas. Sans script, la capture
-        reste : c'est la version qui se dégrade le mieux. */
-  if (matchMedia('(min-width: 721px)').matches) {
+        POURQUOI UN FILM, ET NON LE PROTOTYPE. La page a servi le prototype dans
+        une iframe jusqu'au 3 septembre 2026. Servir le prototype, c'est servir
+        sa spécification entière : les phases, les familles, le catalogue et ses
+        seuils. Rien ne protège un fichier que le navigateur a déjà téléchargé,
+        ni l'iframe qui l'encadre, ni la minification. La seule protection est
+        de ne pas l'envoyer. Un film garde le mouvement sans livrer le code.
+
+        Le remplacement se fait en script et non par une règle d'affichage : une
+        vidéo cachée se précharge quand même. Sans script, la capture reste :
+        c'est la version qui se dégrade le mieux.
+
+        Le mouvement est refusé à qui demande moins d'animation : la capture lui
+        suffit, comme pour le clignement de la marque ci-dessus. */
+  if (matchMedia('(min-width: 721px)').matches
+      && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const cadre = document.querySelector('.appareil');
     const vitre = document.createElement('div');
     vitre.className = 'vitre';
-    const cadran = document.createElement('iframe');
-    cadran.src = 'prototype.html';
-    cadran.title = 'Le prototype de GutQuest, à parcourir';
-    vitre.appendChild(cadran);
+    const film = document.createElement('video');
+    /* MUET ET EN LIGNE AVANT LA SOURCE. Le navigateur décide d'autoriser ou non
+       la lecture automatique au moment où il connaît la source : une vidéo qui
+       n'est pas encore déclarée muette est refusée, et reste sur son poster.
+       Mesuré le 3 septembre 2026, source posée en premier : paused restait vrai
+       et currentTime n'avançait pas d'une image. */
+    film.muted = true;
+    film.defaultMuted = true;
+    film.playsInline = true;
+    film.autoplay = true;
+    film.loop = true;
+    film.poster = 'demo-poster.png';
+    film.setAttribute('aria-label', 'GutQuest en démonstration : l’accueil, le chemin des phases, l’explorateur d’aliments.');
+    film.src = 'demo.webm';
+    vitre.appendChild(film);
     cadre.replaceChild(vitre, cadre.querySelector('img'));
+    /* Et si le navigateur refuse tout de même, le poster reste : la page ne
+       montre jamais de vide, elle montre l'accueil immobile. */
+    film.play().catch(() => {});
   }
 </script>
 </body>
